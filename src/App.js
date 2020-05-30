@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Component } from "react";
-
+import Nav from './nav';
 import axios from "axios";
 import classes from "./App.module.css";
 
@@ -49,7 +49,8 @@ class App extends Component {
     }
     return (
       <React.Fragment>
-        <h1>Hello Omar noob</h1>
+        <Nav/>
+        <h1>Hearthstone App</h1>
         {spinner}
         {this.state.cards.map((card) => (
           <img  key={card.cardId} src={card.img} />
