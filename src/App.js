@@ -22,8 +22,10 @@ class App extends Component {
         },
       })
       .then((response) => {
-        // data.push(response.data.basic)
-        const data = response.data.Classic.slice(0,10);
+    
+        // const data = response.data.Classic.slice(150,180);
+        const data = response.data.Classic.filter( card => card.artist);
+        
         this.setState({ cards: data });
         console.log(response.data.Classic);
         this.setState({loading:false})
@@ -50,7 +52,7 @@ class App extends Component {
         <h1>Hello Omar noob</h1>
         {spinner}
         {this.state.cards.map((card) => (
-          <img className={classes.cards} key={card.cardId} src={card.img} />
+          <img  key={card.cardId} src={card.img} />
         ))}
         {error}
       </React.Fragment>
