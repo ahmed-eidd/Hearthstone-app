@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputField {
+  padding: 16px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+.inputField::placeholder {
+  color: #333;
+  font-size: 20px;
+}
+
+.inputField:focus {
+  outline: black;
+}
+
+#inputFieldIcon {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  margin-left: -35px;
+  color: #333;
+}

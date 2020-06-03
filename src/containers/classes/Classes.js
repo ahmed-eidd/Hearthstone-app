@@ -11,7 +11,7 @@ class Classes extends Component {
 
   componentDidMount() {
     this.setState({loading:true})
-    const URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards";
+    const URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards?collectible=1";
     axios
       .get(URL, {
         headers: {
@@ -34,6 +34,8 @@ class Classes extends Component {
         console.log("error " + error);
         this.setState({loading:false})
       });
+
+      // axios.get(`https://art.hearthstonejson.com/v1/render/latest/enUS/512x/${this.state.cards[0].cardId}.png`).then(res=> console.log(res.data)).catch(err => console.log(err.message))
   }
   render() {
     let spinner = null
