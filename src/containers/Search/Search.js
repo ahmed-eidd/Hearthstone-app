@@ -25,7 +25,8 @@ const Search = () => {
           )
           .then((res) => {
             setCards(res.data);
-       
+            console.log(res.data)
+            setError(false)
             
           })
           .catch((err) => {
@@ -45,11 +46,13 @@ const Search = () => {
     suggestions = <Result result={cards} />;
   }
   if (error) {
-    suggestions = <p>No Result...</p>;
+    suggestions = <p >No Result...</p>;
   }
 
+  
+
   return (
-    <div >
+    <div className={classes.container} >
       <form onSubmit={(event) => onSumbitHandler(event)}>
         <input
           className={classes.inputField}

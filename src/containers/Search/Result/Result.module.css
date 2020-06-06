@@ -1,12 +1,22 @@
-.resultList {
-  list-style: none;
-  min-height: 100px;
-
+.result {
   margin: 10px auto;
-  background-color: aliceblue;
-  
+  margin: 0 auto;
+  width: 100%;
 }
 
-.resultList li {
-  font-size: 18px;
+.resultContainer {
+  display: flex;
+  margin: 0 auto;
+  width: 50%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.resultContainer div p {
+  text-align: start;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(3,3,3, 0.5);
+  padding: 15px 25px;
 }

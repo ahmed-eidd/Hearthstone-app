@@ -1,10 +1,30 @@
 .container {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 70vh;
 }
 
+.container form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.container p {
+  /* fontWeight: 'bold', color: '#ffffff', fontSize: '20px', textAlign: 'center'; */
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 15px 25px;
+  background-color: rgba(3, 3, 3, 0.5);
+}
 .inputField {
   padding: 16px 30px;
   font-size: 20px;
