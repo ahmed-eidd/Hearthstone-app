@@ -1,16 +1,20 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import classes from "./Classes.module.css";
 
-class Classes extends Component {
-  state = {
-    cards: [],
-    error: null,
-    loading: false,
-  };
+const Classes = () => {
+  // state = {
+  //   cards: [],
+  //   error: null,
+  //   loading: false,
+  // };
+  const [cards,setCards] = useState([]);
+  const [error,setError] = useState(null);
+  const [loading,setLoading] = useState(false)
 
-  componentDidMount() {
-    this.setState({ loading: true });
+  useEffect(() => {
+
+    setLoading(true)
     const URL =
     "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/classes/Shaman?collectible=1";
     axios
@@ -25,41 +29,40 @@ class Classes extends Component {
         const data = response.data.filter((card) => card.type !== 'Hero').slice(0, 20);
         // const data = response.data.Classic.filter( card => card.artist);
         // const data = response.data
-        this.setState({ cards: data });
+        setCards(data)
         console.log(response.data);
         console.log(data);
-        this.setState({ loading: false });
+        setLoading(false);
       })
       .catch((error) => {
-        this.setState({ error: "Something went wrong" });
+        setError('Something Went Wrong! Sorry.')
         console.log("error " + error);
-        this.setState({ loading: false });
+        setLoading(false)
       });
 
-    // axios.get(`https://art.hearthstonejson.com/v1/render/latest/enUS/512x/${this.state.cards[0].cardId}.png`).then(res=> console.log(res.data)).catch(err => console.log(err.message))
-  }
-  render() {
+  },[]) 
+ 
     let spinner = null;
-    if (this.state.loading) {
+    if (loading) {
       spinner = <div className={classes.loader}></div>;
     }
-    let error = null;
-    if (this.state.error) {
-      error = <p style={{ fontSize: "40px", color:"#ffffff" }}>{this.state.error}</p>;
+    let errorMsg = null;
+    if (error) {
+      errorMsg = <p style={{ fontSize: "40px", color:"#ffffff" }}>{error}</p>;
     }
     return (
       <div className={classes.classesContainer}>
         <h1>Hearthstone App</h1>
         {spinner}
         <div className={classes.imgContainer}>
-          {this.state.cards.map((card) => (
+          {cards.map((card) => (
             <img key={card.cardId} src={card.img} />
           ))}
         </div>
-        {error}
+        {errorMsg}
       </div>
     );
   }
-}
+
 
 export default Classes;
