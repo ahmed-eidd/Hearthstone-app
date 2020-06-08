@@ -1,3 +1,43 @@
+.classesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.classesContainer h1 {
+  color: white;
+
+}
+
+
+.imgContainer {
+  margin: 10px auto;
+  display: grid;
+  width: 80%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* grid-template-rows: repeat(auto-fit,minmax(300px,1fr)); */
+}
+.imgContainer img {
+  width: 200px;
+  height: 300px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .ldsellipsis {
   display: inline-block;
   position: relative;
@@ -16,7 +56,7 @@
   animation: load7 1.8s infinite ease-in-out;
 }
 .loader {
-  color: #000;
+  color: #ffffff;
   font-size: 10px;
   margin: 80px auto;
   position: relative;

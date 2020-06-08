@@ -6,7 +6,7 @@ import classes from './Search.module.css';
 const Search = () => {
   const [query, setQuery] = useState("");
   const [cards, setCards] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
 
   const onChangeHandler = (event, query) => {
     setQuery(event.target.value);
