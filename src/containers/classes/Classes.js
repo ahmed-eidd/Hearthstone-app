@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import classes from "./Classes.module.css";
+import Button from "../../components/UI/Button/Button";
+import ClassesIcon from './ClassesIcon/ClassesIcon';
 
 const Classes = () => {
   // state = {
@@ -8,15 +10,15 @@ const Classes = () => {
   //   error: null,
   //   loading: false,
   // };
-  const [cards,setCards] = useState([]);
-  const [error,setError] = useState(null);
-  const [loading,setLoading] = useState(false)
+  const [cards, setCards] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState("Priest");
+  const [classesList,setClasses] = useState(['Priest','Shaman','Rogue','Paladin','Warrior','Druid','Mage','Hunter','Warlock'])
 
   useEffect(() => {
-
-    setLoading(true)
-    const URL =
-    "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/classes/Shaman?collectible=1";
+    setLoading(true);
+    const URL = `https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/classes/${query}?collectible=1`;
     axios
       .get(URL, {
         headers: {
@@ -26,43 +28,54 @@ const Classes = () => {
         },
       })
       .then((response) => {
-        const data = response.data.filter((card) => card.type !== 'Hero').slice(0, 20);
+        const data = response.data
+          .filter((card) => card.type !== "Hero")
+          .slice(0, 20);
         // const data = response.data.Classic.filter( card => card.artist);
         // const data = response.data
-        setCards(data)
+        setCards(data);
         console.log(response.data);
         console.log(data);
         setLoading(false);
       })
       .catch((error) => {
-        setError('Something Went Wrong! Sorry.')
+        setError("Something Went Wrong! Sorry.");
         console.log("error " + error);
-        setLoading(false)
+        setLoading(false);
       });
+  }, [query]);
 
-  },[]) 
- 
-    let spinner = null;
-    if (loading) {
-      spinner = <div className={classes.loader}></div>;
-    }
-    let errorMsg = null;
-    if (error) {
-      errorMsg = <p style={{ fontSize: "40px", color:"#ffffff" }}>{error}</p>;
-    }
-    return (
-      <div className={classes.classesContainer}>
-        <h1>Hearthstone App</h1>
-        {spinner}
-        <div className={classes.imgContainer}>
-          {cards.map((card) => (
-            <img key={card.cardId} src={card.img} />
-          ))}
-        </div>
-        {errorMsg}
-      </div>
-    );
+  const setClassesQuery = classQuery => {
+    setQuery(classQuery)
   }
 
+  let spinner = (
+    <div className={classes.imgContainer}>
+      {cards.map((card) => (
+        <img key={card.cardId} src={card.img} />
+      ))}
+    </div>
+  );
+  if (loading) {
+    spinner = <div className={classes.loader}></div>;
+  }
+  let errorMsg = null;
+  if (error) {
+    errorMsg = <p style={{ fontSize: "40px", color: "#ffffff" }}>{error}</p>;
+  }
+  return (
+    <div className={classes.classesContainer}>
+      <h1>Hearthstone App</h1>
+      <ul className={classes.iconList}>
+      {/* <Button clicked={() => query === 'Priest' ? setQuery('Warlock') : setQuery('Priest')}>Click Me</Button> */}
+      {classesList.map(el => <ClassesIcon iconClicked={() => setClassesQuery(el)}>{el}</ClassesIcon>
+      )}
+      </ul>
+      {spinner}
+
+      {errorMsg}
+    </div>
+  );
+};
 
 export default Classes;
