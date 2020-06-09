@@ -3,6 +3,7 @@ import axios from "axios";
 import classes from "./Classes.module.css";
 import Button from "../../components/UI/Button/Button";
 import ClassesIcon from './ClassesIcon/ClassesIcon';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 const Classes = () => {
   // state = {
@@ -14,6 +15,7 @@ const Classes = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("Priest");
+  const [active, setActive] = useState(false)
   const [classesList,setClasses] = useState(['Priest','Shaman','Rogue','Paladin','Warrior','Druid','Mage','Hunter','Warlock'])
 
   useEffect(() => {
@@ -46,7 +48,8 @@ const Classes = () => {
   }, [query]);
 
   const setClassesQuery = classQuery => {
-    setQuery(classQuery)
+    setQuery(classQuery);
+    setActive(true)
   }
 
   let spinner = (
@@ -57,7 +60,7 @@ const Classes = () => {
     </div>
   );
   if (loading) {
-    spinner = <div className={classes.loader}></div>;
+    spinner = <Spinner/>;
   }
   let errorMsg = null;
   if (error) {
@@ -68,7 +71,7 @@ const Classes = () => {
       <h1>Hearthstone App</h1>
       <ul className={classes.iconList}>
       {/* <Button clicked={() => query === 'Priest' ? setQuery('Warlock') : setQuery('Priest')}>Click Me</Button> */}
-      {classesList.map(el => <ClassesIcon iconClicked={() => setClassesQuery(el)}>{el}</ClassesIcon>
+      {classesList.map(el => <ClassesIcon key={el} active={active} iconClicked={() => setClassesQuery(el)}>{el}</ClassesIcon>
       )}
       </ul>
       {spinner}
