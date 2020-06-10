@@ -3,7 +3,7 @@ import classes from './ClassesIcon.module.css';
 
 const ClassesIcon = (props) => {
   return (
-    <li onClick={props.iconClicked} className={props.active ? [classes.icon, classes.active].join(' ') : classes.icon }>
+    <li onClick={props.iconClicked} className={props.classes}>
       {props.children}
     </li>
   )

@@ -69,8 +69,7 @@ const Search = () => {
   let suggestions = null;
   if (cards) {
     suggestions = <Result result={cards} />;
-  }
-  if (error) {
+  } else if (error) {
     suggestions = <p>No Result...</p>;
   }
 

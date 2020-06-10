@@ -14,9 +14,7 @@
 .icon:hover {
   transform: translateY(-3px);
 }
-
-.icon:active,
-.icon:visited,
 .active {
   background-color: orange;
+  transform: translateY(-3px);
 }

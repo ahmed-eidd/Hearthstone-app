@@ -15,7 +15,7 @@ const Classes = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("Priest");
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(query);
   const [classesList,setClasses] = useState(['Priest','Shaman','Rogue','Paladin','Warrior','Druid','Mage','Hunter','Warlock'])
 
   useEffect(() => {
@@ -47,9 +47,10 @@ const Classes = () => {
       });
   }, [query]);
 
-  const setClassesQuery = classQuery => {
+  const setClassesQuery = (classQuery,id) => {
     setQuery(classQuery);
-    setActive(true)
+    setActive(classQuery);
+    
   }
 
   let spinner = (
@@ -70,8 +71,8 @@ const Classes = () => {
     <div className={classes.classesContainer}>
       <h1>Hearthstone App</h1>
       <ul className={classes.iconList}>
-      {/* <Button clicked={() => query === 'Priest' ? setQuery('Warlock') : setQuery('Priest')}>Click Me</Button> */}
-      {classesList.map(el => <ClassesIcon key={el} active={active} iconClicked={() => setClassesQuery(el)}>{el}</ClassesIcon>
+
+      {classesList.map((el,i) => <ClassesIcon key={i} active={active} iconClicked={() => setClassesQuery(el)} classes={el === active ? [classes.icon, classes.active].join(' ') : classes.icon }>{el}</ClassesIcon>
       )}
       </ul>
       {spinner}
