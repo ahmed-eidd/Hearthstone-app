@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Classes from './containers/classes/Classes';
 import Search from './containers/Search/Search';
 import Layout from './components/layout/Layout';
@@ -7,15 +7,15 @@ import Layout from './components/layout/Layout';
 const App = () => {
   return (
     <Layout>
-       <Switch>
+      <Switch>
         <Route path="/" exact component={Classes} />
         <Route path="/search" component={Search} />
       </Switch>
     </Layout>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 
 // function App() {
 //   const [cards, setCards] = useState([])
