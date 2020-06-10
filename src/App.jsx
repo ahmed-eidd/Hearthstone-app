@@ -3,7 +3,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Classes from './containers/classes/Classes';
 import Search from './containers/Search/Search';
 import Layout from './components/layout/Layout';
-
+import './App.css';
 const App = () => {
   return (
     <Layout>
