@@ -14,7 +14,3 @@
 .icon:hover {
   transform: translateY(-3px);
 }
-.active {
-  background-color: orange;
-  transform: translateY(-3px);
-}

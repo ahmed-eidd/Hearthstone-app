@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Result from './Result/Result';
 import classes from './Search.module.css';
@@ -9,6 +9,11 @@ const Search = () => {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const inputRef = useRef('')
+
+  useEffect(() => {
+    inputRef.current.focus()
+  },[])
 
   const onChangeHandler = (event) => {
     setQuery(event.target.value);
@@ -79,6 +84,7 @@ const Search = () => {
     <div className={classes.container}>
       <form onSubmit={onSumbitHandler}>
         <input
+        ref={inputRef}
           className={classes.inputField}
           type="text"
           value={query}
