@@ -8,6 +8,11 @@
 
 .classesContainer h1 {
   color: white;
+  margin: 30px auto;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 5px solid white;
+  padding: 15px 25px;
 }
 
 .imgContainer {

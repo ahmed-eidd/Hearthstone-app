@@ -8,7 +8,7 @@ const Result = (props) => {
       <div>
         <p>Name : {res.name}</p>
         <p>Cost : {res.cost}</p>
-        <p>Class : {res.playerClass}</p>
+        <p>Set : {res.cardSet}</p>
       </div>
     </div>
   ));

@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
+  height: 100%;
 }
 
 .container form {
@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin: 50px auto;
 }
 
 

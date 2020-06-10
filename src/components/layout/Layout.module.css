@@ -1,9 +1,7 @@
 .main {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../assets/background.jpg');
+  
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/background.jpg');
   background-position: center 10%;
   background-size: cover;
   background-repeat: no-repeat;
