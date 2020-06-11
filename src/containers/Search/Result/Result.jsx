@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable linebreak-style */
 // eslint-disable-next-line linebreak-style
 /* eslint react/prop-types: 0 */
@@ -15,16 +16,13 @@ const Result = ({ result }) => {
       )}
       <div>
         <p>
-          Name:
-          {res.name}
+          Name: {res.name}
         </p>
         <p>
-          Cost:
-          {res.cost}
+          Cost: {res.cost}
         </p>
         <p>
-          Set:
-          {res.cardSet}
+          Set: {res.cardSet}
         </p>
       </div>
     </div>

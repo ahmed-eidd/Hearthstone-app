@@ -1,0 +1,29 @@
+.container {
+  width: 80%;
+  margin: 50px auto;
+}
+
+.container ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+
+}
+
+.containerList {
+  background-color: #2c2c54;
+  color: white;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.active {
+  background-color: #218c74 ;
+}

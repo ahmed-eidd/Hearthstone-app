@@ -1,12 +1,9 @@
-import React from 'react'
-import classes from './ClassesIcon.module.css';
+import React from 'react';
 
-const ClassesIcon = (props) => {
-  return (
-    <li onClick={props.iconClicked} className={props.classes}>
-      {props.children}
-    </li>
-  )
-}
+const ClassesIcon = props => (
+  <li onClick={props.iconClicked} className={props.iconClasses}>
+    {props.children}
+  </li>
+);
 
-export default ClassesIcon
+export default ClassesIcon;

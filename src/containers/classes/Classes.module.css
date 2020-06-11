@@ -29,6 +29,7 @@
   height: 300px;
 }
 
+
 .iconList {
   width: 80%;
   display: grid;
@@ -62,10 +63,10 @@
 
 
 
+ 
 .ldsellipsis {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
 }
-
