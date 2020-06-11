@@ -1,17 +1,31 @@
-import React from "react";
-import classes from "./Result.module.css";
+/* eslint-disable linebreak-style */
+// eslint-disable-next-line linebreak-style
+/* eslint react/prop-types: 0 */
 
-const Result = (props) => {
-  const options = props.result.map((res) => (
+import React from 'react';
+import classes from './Result.module.css';
+
+const Result = ({ result }) => {
+  const options = result.map((res) => (
     <div key={res.cardId} className={classes.resultContainer}>
-      
-      {res.img ==null ? <p>Image Missing</p> : <img src={res.img} />}
-
+      {res.img == null ? (
+        <p>Image Missing</p>
+      ) : (
+        <img alt={`${res.name} Card`} src={res.img} />
+      )}
       <div>
-        
-        <p>Name : {res.name}</p>
-        <p>Cost : {res.cost}</p>
-        <p>Set : {res.cardSet}</p>
+        <p>
+          Name:
+          {res.name}
+        </p>
+        <p>
+          Cost:
+          {res.cost}
+        </p>
+        <p>
+          Set:
+          {res.cardSet}
+        </p>
       </div>
     </div>
   ));

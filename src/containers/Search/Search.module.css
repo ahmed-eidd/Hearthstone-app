@@ -26,14 +26,21 @@
   background-color: rgba(3, 3, 3, 0.5);
 }
 .inputField {
-  padding: 16px 30px;
+  color: white;
   font-size: 20px;
-  border-radius: 8px;
+  font-weight: bold;
+  padding: 15px 30px 15px 5px;
+  font-size: 20px;
+  border: none;
+  background: none;
+  border-bottom: 3px solid white;
 }
 
 .inputField::placeholder {
-  color: #333;
+  color: white;
   font-size: 20px;
+  font-weight: bold;
+  
 }
 
 .inputField:focus {
