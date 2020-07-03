@@ -43,6 +43,7 @@ const Search = () => {
     // }
     // }
   };
+  const APP_KEY = process.env.REACT_APP_API_KEY;
 
   const onSumbitHandler = (e) => {
     setLoading(true);
@@ -53,8 +54,7 @@ const Search = () => {
         {
           headers: {
             'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
-            'x-rapidapi-key':
-              '6cad9a4fb4msh9c34bf13bb9f838p1f784fjsna38b9c34760a',
+            'x-rapidapi-key': APP_KEY,
           },
         }
       )

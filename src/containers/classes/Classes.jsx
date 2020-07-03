@@ -30,8 +30,9 @@ const Classes = () => {
   const [currentPage, setCurrnetPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(15);
   const [pageActive, setPageActive] = useState(currentPage);
-
+  const APP_KEY = process.env.REACT_APP_API_KEY;
   useEffect(() => {
+    console.log(APP_KEY);
     setLoading(true);
     setCurrnetPage(1);
     setPageActive(1);
@@ -40,8 +41,7 @@ const Classes = () => {
       .get(URL, {
         headers: {
           'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
-          'x-rapidapi-key':
-            '6cad9a4fb4msh9c34bf13bb9f838p1f784fjsna38b9c34760a',
+          'x-rapidapi-key': APP_KEY,
         },
       })
       .then((response) => {
@@ -53,14 +53,14 @@ const Classes = () => {
         console.log(data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch((err) => {
         setError('Something Went Wrong! Sorry.');
-        console.log('error ' + error);
+        console.log(`error + ${err}`);
         setLoading(false);
       });
   }, [query]);
 
-  const setClassesQuery = (classQuery, id) => {
+  const setClassesQuery = (classQuery) => {
     setQuery(classQuery);
     setActive(classQuery);
   };
@@ -77,9 +77,25 @@ const Classes = () => {
 
   let mainContent = (
     <React.Fragment>
+      <ul className={classes.iconList}>
+        {classesList.map((el) => (
+          <ClassesIcon
+            key={el}
+            active={active}
+            iconClicked={() => setClassesQuery(el)}
+            iconClasses={
+              el === active
+                ? [classes.icon, classes.active].join(' ')
+                : classes.icon
+            }
+          >
+            {el}
+          </ClassesIcon>
+        ))}
+      </ul>
       <div className={classes.imgContainer}>
         {CardsForPagination.map((card) => (
-          <img key={card.cardId} src={card.img} />
+          <img key={card.cardId} src={card.img} alt="Missing Artwork" />
         ))}
       </div>
       <Pagintaion
@@ -100,22 +116,7 @@ const Classes = () => {
   return (
     <div className={classes.classesContainer}>
       <h1>Hearthstone App</h1>
-      <ul className={classes.iconList}>
-        {classesList.map((el, i) => (
-          <ClassesIcon
-            key={i}
-            active={active}
-            iconClicked={() => setClassesQuery(el)}
-            iconClasses={
-              el === active
-                ? [classes.icon, classes.active].join(' ')
-                : classes.icon
-            }
-          >
-            {el}
-          </ClassesIcon>
-        ))}
-      </ul>
+
       {mainContent}
 
       {errorMsg}
