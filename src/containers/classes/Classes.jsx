@@ -32,7 +32,7 @@ const Classes = () => {
   const [pageActive, setPageActive] = useState(currentPage);
   const APP_KEY = process.env.REACT_APP_API_KEY;
   useEffect(() => {
-    console.log(APP_KEY);
+
     setLoading(true);
     setCurrnetPage(1);
     setPageActive(1);
@@ -108,18 +108,14 @@ const Classes = () => {
   );
   if (loading) {
     mainContent = <Spinner />;
-  }
-  let errorMsg = null;
-  if (error) {
-    errorMsg = <p style={{ fontSize: '40px', color: '#ffffff' }}>{error}</p>;
+  } else if (error) {
+    mainContent = <p style={{ fontSize: '40px', color: '#ffffff' }}>{error}</p>;
   }
   return (
     <div className={classes.classesContainer}>
       <h1>Hearthstone App</h1>
 
       {mainContent}
-
-      {errorMsg}
     </div>
   );
 };
